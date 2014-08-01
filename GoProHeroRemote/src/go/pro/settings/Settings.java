@@ -1,3 +1,4 @@
+package go.pro.settings;
 
 public class Settings {
 
