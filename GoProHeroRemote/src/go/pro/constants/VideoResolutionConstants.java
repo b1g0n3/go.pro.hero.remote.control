@@ -1,6 +1,6 @@
 package go.pro.constants;
 
-public class ResolutionConstants {
+public class VideoResolutionConstants {
 	//command hero2 & hero3 silver
 	private static String HERO23_RESOLUTION_COMMAND = "VR";
 	
