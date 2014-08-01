@@ -2,7 +2,7 @@ package go.pro.constants;
 
 public class ModeConstants {
 	//mode command
-	public static String MODE_COMMAND = "CM";
+	public static String MODE_COMMAND_CAMERA = "CM";
 	
 	//mode values
 	public static String MODE_VIDEO = "00";

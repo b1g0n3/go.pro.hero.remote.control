@@ -2,7 +2,7 @@ package go.pro.constants;
 
 public class VideoResolutionConstants {
 	//command hero2 & hero3 silver
-	public static String HERO23_RESOLUTION_COMMAND = "VR";
+	public static String HERO23_RESOLUTION_COMMAND_CAMERA = "VR";
 	
 	//values hero2 & hero3 silver
 	public static String HERO23_RESOLUTION_WVGA_60 = "00";
@@ -14,8 +14,8 @@ public class VideoResolutionConstants {
 	public static String HERO23_RESOLUTION_1080p_30 = "06";
 	
 	//commands hero3 black
-	public static String HERO3_BLACK_RESOLUTION_COMMAND_OLD = "VR";
-	public static String HERO3_BLACK_RESOLUTION_COMMAND_NEW = "VV";
+	public static String HERO3_BLACK_RESOLUTION_COMMAND_OLD_CAMERA = "VR";
+	public static String HERO3_BLACK_RESOLUTION_COMMAND_NEW_CAMERA = "VV";
 	
 	//values hero3 black
 	public static String HERO3_BLACK_RESOLUTION_WVGA_240_NEW = "00";
@@ -31,8 +31,8 @@ public class VideoResolutionConstants {
 	public static String HERO3_BLACK_RESOLUTION_4k_15_NEW = "06";
 	
 	//commands hero3+ black
-	public static String HERO3_PLUS_BLACK_RESOLUTION_COMMAND_WITHOUT_FPS = "VV";
-	public static String HERO3_PLUS_BLACK_RESOLUTION_COMMAND_WITH_FPS = "FS";
+	public static String HERO3_PLUS_BLACK_RESOLUTION_COMMAND_WITHOUT_FPS_CAMERA = "VV";
+	public static String HERO3_PLUS_BLACK_RESOLUTION_COMMAND_WITH_FPS_CAMERA = "FS";
 	
 	//values hero3+ black
 	public static String HERO3_PLUS_BLACK_RESOLUTION_720p_WITHOUT_FPS = "01";
@@ -52,7 +52,7 @@ public class VideoResolutionConstants {
 	public static String HERO3_PLUS_BLACK_RESOLUTION_4k_17_9_WITHOUT_FPS = "08";
 	
 	//frame rate command hero3+ black
-	public static String HERO3_PLUS_BLACK_FPS_COMMAND = "FS";
+	public static String HERO3_PLUS_BLACK_FPS_COMMAND_CAMERA = "FS";
 	
 	//frame rate values hero3+ black
 	public static String HERO3_PLUS_BLACK_FPS_12 = "00";
