@@ -22,13 +22,13 @@ public class VideoResolutionConstants {
 	public static String HERO3_BLACK_RESOLUTION_720p_120_NEW = "01";
 	public static String HERO3_BLACK_RESOLUTION_960p_100_NEW = "02";
 	public static String HERO3_BLACK_RESOLUTION_1080p_60_NEW = "03";
-	public static String HERO3_BLACK_RESOLUTION_1440p_40_NEW = "04";
-	public static String HERO3_BLACK_RESOLUTION_1080p_30_OLD = "05";
-	public static String HERO3_BLACK_RESOLUTION_960p_48_OLD = "06";
+	public static String HERO3_BLACK_RESOLUTION_1440p_48_NEW = "04";
 	public static String HERO3_BLACK_RESOLUTION_2_7k_24_NEW = "07";
 	public static String HERO3_BLACK_RESOLUTION_2_7k_30_NEW = "05";
 	public static String HERO3_BLACK_RESOLUTION_4k_12_NEW = "08";
 	public static String HERO3_BLACK_RESOLUTION_4k_15_NEW = "06";
+	public static String HERO3_BLACK_RESOLUTION_720p_60_OLD = "06";
+	public static String HERO3_BLACK_RESOLUTION_960p_48_OLD = "07";
 	
 	//commands hero3+ black
 	public static String HERO3_PLUS_BLACK_RESOLUTION_COMMAND_WITHOUT_FPS_CAMERA = "VV";
