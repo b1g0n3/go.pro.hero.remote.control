@@ -27,8 +27,8 @@ public class VideoResolutionConstants {
 	public static String HERO3_BLACK_RESOLUTION_2_7k_30_NEW = "05";
 	public static String HERO3_BLACK_RESOLUTION_4k_12_NEW = "08";
 	public static String HERO3_BLACK_RESOLUTION_4k_15_NEW = "06";
-	public static String HERO3_BLACK_RESOLUTION_720p_60_OLD = "06";
-	public static String HERO3_BLACK_RESOLUTION_960p_48_OLD = "07";
+	public static String HERO3_BLACK_RESOLUTION_960p_48_OLD = "06";
+	public static String HERO3_BLACK_RESOLUTION_1080p_30_OLD = "05";
 	
 	//commands hero3+ black
 	public static String HERO3_PLUS_BLACK_RESOLUTION_COMMAND_WITHOUT_FPS_CAMERA = "VV";
@@ -67,4 +67,8 @@ public class VideoResolutionConstants {
 	public static String HERO3_PLUS_BLACK_FPS_100 = "08";
 	public static String HERO3_PLUS_BLACK_FPS_120 = "09";
 	public static String HERO3_PLUS_BLACK_FPS_240 = "0a";
+	
+	//custom constants used in app
+	public static int VIDEO_QUALITY_LOW = 0;
+	public static int VIDEO_QUALITY_HIGH = 1;
 }
