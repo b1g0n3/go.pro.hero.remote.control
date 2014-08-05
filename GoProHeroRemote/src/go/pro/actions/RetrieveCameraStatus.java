@@ -1,6 +1,7 @@
 package go.pro.actions;
 
 import go.pro.constants.CommandConstants;
+import go.pro.utils.CommandBuildingUtils;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -12,10 +13,9 @@ public class RetrieveCameraStatus {
 	final protected static char[] hexArray = "0123456789ABCDEF".toCharArray();
 	
 	public static String RetrieveStatus(String password){
-		String commandURL = "http://10.5.5.9/camera/se?t=" + password;
 		HttpURLConnection con = null;
 		try {
-			URL url = new URL(commandURL);
+			URL url = new URL(CommandBuildingUtils.generateCommandURL("se", null, password, "camera"));
 			con =(HttpURLConnection) url.openConnection();
 	        con.setRequestMethod("GET");
 	        //check if camera is powered on and if it's not - send command to power on
@@ -23,14 +23,11 @@ public class RetrieveCameraStatus {
 	        	 con.disconnect();
 	        	 int i = 0;
 	        	 while(i < 6) {
-	        		 System.out.println("http://10.5.5.9/bacpac/" + CommandConstants.POWER_COMMAND_BACPAC + "?t=" + password
-	        				 +"&p=%" + CommandConstants.POWER_ON);
-	        		 con = (HttpURLConnection) (new URL("http://10.5.5.9/bacpac/" + CommandConstants.POWER_COMMAND_BACPAC + "?t=" + password
-	        				 +"&p=%" + CommandConstants.POWER_ON)).openConnection();
+	        		 con = (HttpURLConnection) (new URL(CommandBuildingUtils.generateCommandURL(CommandConstants.POWER_COMMAND_BACPAC, CommandConstants.POWER_ON, password, "bacpac"))).openConnection();
 	        		 con.setRequestMethod("GET");
-	        		 System.out.println(con.getResponseCode());
+	        		 con.getResponseCode();
 	        		 con.disconnect();
-	        		 Thread.sleep(10000);
+	        		 Thread.sleep(5000);
 	        		 con =(HttpURLConnection) url.openConnection();
 	        		 con.setRequestMethod("GET");
 	        		 if(con.getResponseCode() == 200) {
@@ -41,16 +38,16 @@ public class RetrieveCameraStatus {
 	        	 }
 	        	 if(i >= 6){
 	        		 System.out.println("Connection could not be established!");
-	            	 return "";
+	            	 return null;
 	        	 }
 	         }
 	 		FileWriter fr = new FileWriter ("test.txt", true);
 	 		FileWriter frStr = new FileWriter ("teststr.txt", true);
-	        InputStream is = con.getInputStream();
 	        byte[] buff = new byte[31];
+	        InputStream is = con.getInputStream();
 	        while (is.read(buff) != -1) {
-	           System.out.println("line: " + buff);
-	        }
+	        	System.out.println("Retrieved status at" + System.currentTimeMillis());
+		    }
 	        con.disconnect();
 	        char[] hexChars = new char[buff.length * 2];
 	        for ( int j = 0; j < buff.length; j++ ) {
