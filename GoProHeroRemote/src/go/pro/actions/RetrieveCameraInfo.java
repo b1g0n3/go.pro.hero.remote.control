@@ -4,14 +4,16 @@ import go.pro.utils.CommandBuildingUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.ConnectException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class RetrieveCameraStatus {
+public class RetrieveCameraInfo {
 	final protected static char[] hexArray = "0123456789ABCDEF".toCharArray();
 	
 	public static String RetrieveStatus(String password){
 		HttpURLConnection con = null;
+		InputStream is = null;
 		try {
 			URL url = new URL(CommandBuildingUtils.generateCommandURL("se", null, password, "camera"));
 			con =(HttpURLConnection) url.openConnection();
@@ -21,10 +23,11 @@ public class RetrieveCameraStatus {
 	        	 return null;
 	        } else {
 	        	byte[] buff = new byte[31];
-	        	InputStream is = con.getInputStream();
+	        	is = con.getInputStream();
 		        while (is.read(buff) != -1) {
 		        	System.out.println("Retrieved status at" + System.currentTimeMillis());
 			    }
+		        is.close();
 		        con.disconnect();
 		        char[] hexChars = new char[buff.length * 2];
 		        for ( int j = 0; j < buff.length; j++ ) {
@@ -34,15 +37,22 @@ public class RetrieveCameraStatus {
 		        }
 		        return String.valueOf(hexChars);
 	        }
+		} catch (ConnectException e) {
+			System.out.println("Could not establish connection!");
 		} catch (IOException e) {
-			if(con != null) {
-				con.disconnect();
-			}
-			return null;
+			e.printStackTrace();
 		} finally {
-			if (con != null) {
-				con.disconnect();
+			try {
+				if(is != null) {
+					is.close();
+				}
+				if (con != null) {
+					con.disconnect();
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
 		}
+		return null;
 	}
 }
