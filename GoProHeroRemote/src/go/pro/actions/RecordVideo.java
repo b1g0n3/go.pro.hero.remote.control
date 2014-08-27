@@ -7,6 +7,7 @@ import go.pro.constants.VideoResolutionConstants;
 import go.pro.utils.CommandBuildingUtils;
 
 import java.io.IOException;
+import java.net.ConnectException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -14,7 +15,7 @@ import java.net.URL;
 public class RecordVideo {
 	
 	public static boolean changeToVideoMode(String password) {
-		String status = RetrieveCameraStatus.RetrieveStatus(password);
+		String status = RetrieveCameraInfo.RetrieveStatus(password);
 		if(status == null) {
 			//Camera is turned off/phone not connected to camer via Wi-Fi
 			return false;
@@ -40,17 +41,19 @@ public class RecordVideo {
 				conn.disconnect();
 			}
 			e.printStackTrace();
-		} catch (IOException e) {
+		} catch (ConnectException e) {
+			System.out.println("Could not establish connection!");
+		}  catch (IOException e) {
 			if(conn != null) {
 				conn.disconnect();
 			}
 			e.printStackTrace();
-		}
+		} 
 		return false;
 	}
 	
 	public static boolean changeVideoQuality(String password, int quality, int cameraModel) {
-		String status = RetrieveCameraStatus.RetrieveStatus(password);
+		String status = RetrieveCameraInfo.RetrieveStatus(password);
 		if(status == null) {
 			//Camera is turned off/phone not connected to camer via Wi-Fi
 			return false;
@@ -86,6 +89,8 @@ public class RecordVideo {
 				conn.disconnect();
 			}
 			e.printStackTrace();
+		} catch (ConnectException e) {
+			System.out.println("Could not establish connection!");
 		} catch (IOException e) {
 			if(conn != null) {
 				conn.disconnect();
@@ -96,7 +101,7 @@ public class RecordVideo {
 	}
 
 	public static boolean startRecordVideo(String password) {
-		String status = RetrieveCameraStatus.RetrieveStatus(password);
+		String status = RetrieveCameraInfo.RetrieveStatus(password);
 		if(status == null) {
 			//Camera is turned off/phone not connected to camer via Wi-Fi
 			return false;
@@ -121,6 +126,8 @@ public class RecordVideo {
 				conn.disconnect();
 			}
 			e.printStackTrace();
+		} catch (ConnectException e) {
+			System.out.println("Could not establish connection!");
 		} catch (IOException e) {
 			if(conn != null) {
 				conn.disconnect();
@@ -135,7 +142,7 @@ public class RecordVideo {
 	}
 	
 	public static boolean stopRecordVideo(String password) {
-		String status = RetrieveCameraStatus.RetrieveStatus(password);
+		String status = RetrieveCameraInfo.RetrieveStatus(password);
 		if(status == null) {
 			//Camera is turned off/phone not connected to camer via Wi-Fi
 			return false;
@@ -160,6 +167,8 @@ public class RecordVideo {
 				conn.disconnect();
 			}
 			e.printStackTrace();
+		} catch (ConnectException e) {
+			System.out.println("Could not establish connection!");
 		} catch (IOException e) {
 			if(conn != null) {
 				conn.disconnect();
